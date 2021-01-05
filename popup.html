@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+     .type-container {
+       /* width: 300px; */
+       display: flex;
+     }
+
+     .type-item {
+       margin: 0 8px;
+       display: flex;
+       align-items: center;
+     }
+
+    </style>
+  </head>
+  <body>
+    <div class="type-container">
+      <div class="type-item">
+        <input type="radio" id="type-basic" name="type" value="basic">
+        <label for="type-basic">Basic</label>
+      </div>
+
+      <div class="type-item">
+        <input type="radio" id="type-normal" name="type" value="normal" checked>
+        <label for="type-normal">Normal</label>
+      </div>
+
+      <div class="type-item">
+        <input type="radio" id="type-advanced" name="type" value="advanced">
+        <label for="type-advanced">Advanced</label>
+      </div>
+    </div>
+
+    <div class="options-container">
+      <div class="options-item">
+        <input type="checkbox" id="option-notes" name="option" value="notes">
+        <label for="type-normal">Notes</label>
+      </div>
+
+      <div class="options-item">
+        <input type="checkbox" id="option-scenario" name="option" value="scenario">
+        <label for="type-normal">Scenario</label>
+      </div>
+
+      <div class="options-item">
+        <input type="checkbox" id="option-regression-scenario" name="option" value="regression-scenario">
+        <label for="type-normal">Regression Scenario</label>
+      </div>
+    </div>
+
+    <div>
+      <button id="add-description">Add description</button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
