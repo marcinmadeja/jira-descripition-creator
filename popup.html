@@ -17,11 +17,35 @@
        align-items: center;
      }
 
+     .btn {
+      order: none;
+      border: 0;
+      outline: none;
+      margin-right: 4px;
+      height: 32px;
+      min-width: 24px;
+      border-radius: 3px;
+      text-shadow: none;
+      line-height: 32px;
+      padding: 0 10px;
+      font-size: 14px;
+      color: #fff;
+      background: #0052cc;
+      cursor: pointer;
+      transition: background .1s ease-out,box-shadow .15s cubic-bezier(.47,.03,.49,1.38);
+     }
+
+     .btn:hover {
+      background-color: #0065ff;
+     }
+
     </style>
   </head>
   <body class="body">
     <div>
-      <button id="add-description">Add description</button>
+      <button id="add-description" class="btn">
+        Add description
+      </button>
     </div>
     <script src="popup.js"></script>
   </body>
