@@ -29,6 +29,8 @@
       * Check accessibility / create a ticket
       * Test in safari / firefox / ie / edge
       * Check edge cases (full length of text, no white spaces)
+      * Create unit, cypress, playwright tests / create ticket
+      * Update tests if necessary
     {panel}
     `;
 
