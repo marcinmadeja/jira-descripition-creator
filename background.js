@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'jonelet.atlassian.net'},
+        pageUrl: {urlMatches: 'atlassian.net'},
       })
       ],
           actions: [new chrome.declarativeContent.ShowPageAction()]

@@ -25,7 +25,7 @@
     `;
   };
 
-  const addNotes = () => {
+  const addNotes = (options) => {
     return `
       {panel:title=Notes|bgColor=#eae6ff}
         Require role *role_name*
@@ -38,6 +38,7 @@
       {panel}
     `;
   }
+
 
   const addDescription = () => {
     return `
