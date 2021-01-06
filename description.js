@@ -76,6 +76,7 @@
       selectedOptions.push("Create unit, cypress, playwright tests / create ticket");
       selectedOptions.push("Check tests and update them if necessary");
     }
+    if (options.includes('improvements-epic')) selectedOptions.push("Did I find something that can be added to improvements epic?");
 
     selectedOptions.push("Add no test if needed");
 
