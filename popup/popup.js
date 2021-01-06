@@ -57,7 +57,7 @@ addDescription.onclick = function(element) {
     chrome.tabs.executeScript(
         tabs[0].id,
         {
-          file: "description.js",
+          file: "js/description.js",
           allFrames: true
         });
   });
