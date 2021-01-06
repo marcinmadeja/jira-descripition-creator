@@ -2,35 +2,36 @@
   const description = document.getElementById('description');
 
   const getDescription = (options) => {
-    let description = '';
+    const selectedOptions = [];
 
-    if (options.includes('todo')) description += addTodo(options);
 
-    if (options.includes('notes')) description += addNotes(options);
+    if (options.includes('todo')) selectedOptions.push(addTodo(options));
 
-    description += addDescription();
+    if (options.includes('notes')) selectedOptions.push(addNotes(options));
 
-    if (options.includes('scenario')) description += addScenario();
+    selectedOptions.push(addDescription());
 
-    if (options.includes('regression')) description += addRegression();
+    if (options.includes('scenario')) selectedOptions.push(addScenario());
 
-    return description;
+    if (options.includes('regression')) selectedOptions.push(addRegression());
+
+    return selectedOptions.join("\n");
   }
 
   const addNotes = (options) => {
-    let optionsString = '';
+    const selectedOptions = [];
 
-    if (options.includes('responsive')) optionsString += "* responsiveness\n";
-    if (options.includes('accessibility')) optionsString += "* accessibility\n";
-    if (options.includes('edge-cases')) optionsString += "* edge-cases\n";
-    if (options.includes('cross-browser')) optionsString += "* cross-browser\n";
+    if (options.includes('responsive')) selectedOptions.push("responsiveness");
+    if (options.includes('accessibility')) selectedOptions.push("accessibility");
+    if (options.includes('edge-cases')) selectedOptions.push("edge-cases");
+    if (options.includes('cross-browser')) selectedOptions.push("cross-browser");
 
     return `
       {panel:title=Notes for testers}
         Require role *role_name*
 
         *Check also:*
-        ${optionsString}
+        ${selectedOptions.map((string) => "* " + string).join("\n")}
       {panel}
     `;
   }
@@ -65,21 +66,22 @@
   }
 
   const addTodo = (options) => {
-    let optionsString = '';
+    const selectedOptions = [];
 
-    if (options.includes('responsive')) optionsString += "* Check responsiveness / create a ticket\n";
-    if (options.includes('accessibility')) optionsString += "* Check accessibility / create a ticket\n";
-    if (options.includes('cross-browser')) optionsString += "* Test in safari / firefox / ie / edge\n";
-    if (options.includes('edge-cases')) optionsString += "* Check edge cases (full length of text, no white spaces)\n";
+    if (options.includes('responsive')) selectedOptions.push("Check responsiveness / create a ticket");
+    if (options.includes('accessibility')) selectedOptions.push("Check accessibility / create a ticket");
+    if (options.includes('cross-browser')) selectedOptions.push("Test in safari / firefox / ie / edge");
+    if (options.includes('edge-cases')) selectedOptions.push("Check edge cases (full length of text, no white spaces)");
     if (options.includes('tests')) {
-      optionsString += "* Create unit, cypress, playwright tests / create ticket\n";
-      optionsString += "* Check tests and update them if necessary\n";
+      selectedOptions.push("Create unit, cypress, playwright tests / create ticket");
+      selectedOptions.push("Check tests and update them if necessary");
     }
+
+    selectedOptions.push("Add no test if needed");
 
     return `
       {panel:title=Check fallowing points before moving to ready for review|bgColor=#eae6ff}
-        ${optionsString}
-        * Add no test if needed
+        ${selectedOptions.map((string) => "* " + string).join("\n")}
       {panel}
     `;
   }
