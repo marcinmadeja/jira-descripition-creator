@@ -4,7 +4,7 @@
   const getDescription = (options) => {
     let description = '';
 
-    description += addWarning();
+    if (options.includes('todo')) description += addTodo();
 
     if (options.includes('notes')) description += addNotes();
 
@@ -14,23 +14,15 @@
 
     if (options.includes('regression')) description += addRegression();
 
-    if (options.includes('todo')) description += addTodo();
-
     return description;
   }
 
-  const addWarning = () => {
-    return `
-      {panel:title=Notes|bgColor=#fefae6}Remove this message after a ticket is completed.{panel}
-    `;
-  };
-
   const addNotes = (options) => {
     return `
-      {panel:title=Notes|bgColor=#eae6ff}
+      {panel:title=Notes for testers}
         Require role *role_name*
 
-        *Test also:*
+        *Check also:*
         * responsiveness
         * accessibility
         * edge cases (full length of text, no white spaces)
@@ -70,7 +62,7 @@
 
   const addTodo = () => {
     return `
-      {panel:title=To do before ready for review}
+      {panel:title=Check fallowing points before moving to ready for review|bgColor=#eae6ff}
         * Check responsiveness / create a ticket
         * Check accessibility / create a ticket
         * Test in safari / firefox / ie / edge

@@ -1,4 +1,45 @@
 const addDescription = document.getElementById('add-description');
+const allTypes = Array.from(document.querySelectorAll('input[name="type"]'));
+const allOptions = Array.from(document.querySelectorAll('input[name="option"]'));
+
+const basicValues = [
+  'notes',
+  'scenario',
+  'regression'
+];
+
+const standardValues = [
+  ...basicValues,
+  'todo',
+  'responsive',
+  'accessibility',
+];
+
+function onTypeChange(e) {
+	const value = e.currentTarget.value;
+  allOptions.forEach((item) => {
+  	const optionValue = item.value;
+  	if (value === 'basic') {
+			if (basicValues.includes(optionValue)) {
+      	item.checked = true;
+      } else {
+      	item.checked = false;
+      }
+    } else if (value === 'standard') {
+			if (standardValues.includes(optionValue)) {
+      	item.checked = true;
+      } else {
+      	item.checked = false;
+      }
+    } else {
+      item.checked = true;
+    }
+  });
+}
+
+allTypes.forEach((type) => {
+  type.addEventListener('change', onTypeChange);
+});
 
 addDescription.onclick = function(element) {
   const typeValue = document.querySelector('input[name="type"]:checked').value;
@@ -21,3 +62,9 @@ addDescription.onclick = function(element) {
         });
   });
 };
+
+const init = () => {
+  onTypeChange({ currentTarget: { value: 'standard' } });
+}
+
+init();
