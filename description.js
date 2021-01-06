@@ -4,9 +4,9 @@
   const getDescription = (options) => {
     let description = '';
 
-    if (options.includes('todo')) description += addTodo();
+    if (options.includes('todo')) description += addTodo(options);
 
-    if (options.includes('notes')) description += addNotes();
+    if (options.includes('notes')) description += addNotes(options);
 
     description += addDescription();
 
@@ -18,15 +18,19 @@
   }
 
   const addNotes = (options) => {
+    let optionsString = '';
+
+    if (options.includes('responsive')) optionsString += "* responsiveness\n";
+    if (options.includes('accessibility')) optionsString += "* accessibility\n";
+    if (options.includes('edge-cases')) optionsString += "* edge-cases\n";
+    if (options.includes('cross-browser')) optionsString += "* cross-browser\n";
+
     return `
       {panel:title=Notes for testers}
         Require role *role_name*
 
         *Check also:*
-        * responsiveness
-        * accessibility
-        * edge cases (full length of text, no white spaces)
-        * cross browser
+        ${optionsString}
       {panel}
     `;
   }
@@ -60,15 +64,21 @@
     `;
   }
 
-  const addTodo = () => {
+  const addTodo = (options) => {
+    let optionsString = '';
+
+    if (options.includes('responsive')) optionsString += "* Check responsiveness / create a ticket\n";
+    if (options.includes('accessibility')) optionsString += "* Check accessibility / create a ticket\n";
+    if (options.includes('cross-browser')) optionsString += "* Test in safari / firefox / ie / edge\n";
+    if (options.includes('edge-cases')) optionsString += "* Check edge cases (full length of text, no white spaces)\n";
+    if (options.includes('tests')) {
+      optionsString += "* Create unit, cypress, playwright tests / create ticket\n";
+      optionsString += "* Check tests and update them if necessary\n";
+    }
+
     return `
       {panel:title=Check fallowing points before moving to ready for review|bgColor=#eae6ff}
-        * Check responsiveness / create a ticket
-        * Check accessibility / create a ticket
-        * Test in safari / firefox / ie / edge
-        * Check edge cases (full length of text, no white spaces)
-        * Create unit, cypress, playwright tests / create ticket
-        * Update tests if necessary
+        ${optionsString}
         * Add no test if needed
       {panel}
     `;
