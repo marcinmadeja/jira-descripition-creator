@@ -11,6 +11,7 @@ const basicValues = [
 const standardValues = [
   ...basicValues,
   'todo',
+  'messages',
   'responsive',
   'accessibility',
 ];

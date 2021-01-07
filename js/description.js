@@ -7,9 +7,9 @@
 
     if (options.includes('todo')) selectedOptions.push(addTodo(options));
 
-    if (options.includes('notes')) selectedOptions.push(addNotes(options));
-
     selectedOptions.push(addDescription());
+
+    if (options.includes('notes')) selectedOptions.push(addNotes(options));
 
     if (options.includes('scenario')) selectedOptions.push(addScenario());
 
@@ -39,7 +39,7 @@
 
   const addDescription = () => {
     return `
-      {panel:title=Description}
+      {panel:title=What:|bgColor=#eae6ff}
       ...
       {panel}
     `;
@@ -68,6 +68,7 @@
   const addTodo = (options) => {
     const selectedOptions = [];
 
+    if (options.includes('messages')) selectedOptions.push("Add description for messages.ts");
     if (options.includes('responsive')) selectedOptions.push("Check responsiveness / create a ticket");
     if (options.includes('accessibility')) selectedOptions.push("Check accessibility / create a ticket");
     if (options.includes('cross-browser')) selectedOptions.push("Test in safari / firefox / ie / edge");
