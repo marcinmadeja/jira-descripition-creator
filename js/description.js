@@ -82,7 +82,7 @@
     selectedOptions.push("Add no test if needed");
 
     return `
-      {panel:title=Check fallowing points before moving to ready for review|bgColor=#eae6ff}
+      {panel:title=Check following points before moving to ready for review|bgColor=#eae6ff}
         ${selectedOptions.map((string) => "* " + string).join("\n")}
       {panel}
     `;
